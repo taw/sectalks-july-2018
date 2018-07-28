@@ -1,0 +1,17 @@
+GIT
+  remote: https://github.com/taw/ctf-tools
+  revision: 1ab9a9388372cdebcd1416ef86b37dfdd3184569
+  specs:
+    ctf-tools (0.1.20180429)
+
+GEM
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ctf-tools!
+
+BUNDLED WITH
+   1.16.1

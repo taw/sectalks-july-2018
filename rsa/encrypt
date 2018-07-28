@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "ctf-tools"
+
+raise "Key needed" unless ARGV[0]
+n, e = open(ARGV[0]).readlines.map{|x| x[/\d+/].to_i}
+
+message = STDIN.read.chomp.to_i_binary
+
+ct = RSA.encrypt(message, n: n, e: e)
+puts ct
