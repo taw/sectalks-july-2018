@@ -1,0 +1,4 @@
+desc "Compile"
+task "compile" do
+  sh "gcc -m32 -Wall -O3 encode.c re2.c -o re2"
+end
