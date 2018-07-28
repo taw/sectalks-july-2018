@@ -1,0 +1,4 @@
+desc "Compile"
+task "compile" do
+  sh "gcc -m32 -Wall -O3 re1.c -o re1"
+end
