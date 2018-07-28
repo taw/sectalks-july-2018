@@ -1,0 +1,2 @@
+Flag is hidden among some Elon Musk tweets.
+They're all encrypted with AES in CTR mode, but by mistake same IV was used for all of them.

@@ -1,0 +1,5 @@
+Bob sent a message we need to decrypt.
+
+Probably due to bad RNG, it looks like Bob and Alice picked same N for their keys, and we managed to steal Alice's private key as well.
+
+Perhaps there's a way to take advantage of this.
