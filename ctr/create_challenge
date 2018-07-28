@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "csv"
+# Filter out non-ASCII to avoid any encoding issues
+lines = open("data_elonmusk.csv", "rb").readlines
+only_ascii = lines.grep_v(/[^\x00-\x7f]/).join
+
+msgs = CSV.parse(only_ascii)[1..-1].map{|x| x[1]}
+flag = ARGV[0]
+msgs = [flag, *msgs].shuffle
+
+key = 32.times.map{|x| rand(16).to_s(16)}.join.upcase
+iv = 32.times.map{|x| rand(16).to_s(16)}.join.upcase
+
+puts key
+puts iv
+
+pt = Pathname("plaintext").tap(&:mkpath)
+ct = Pathname("encrypted").tap(&:mkpath)
+msgs.each_with_index do |msg, i|
+  fn = "%04d" % (i+1)
+  (pt+fn).write(msg)
+  system "openssl enc -aes-128-ctr -K #{key} -iv #{iv} <#{pt+fn} >#{ct+fn}"
+end
+
+# openssl enc -d -aes-128-ctr -K 65BCF622BECD4082853B5ECCA34BE986 -iv E43D6391E206F514F6ECFCFA6A987964 < encrypted/0001
